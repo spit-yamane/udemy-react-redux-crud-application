@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { readEvents } from '../actions';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
+import events_show from './events_show';
 
 class EventsIndex extends Component {
 
@@ -13,7 +14,11 @@ class EventsIndex extends Component {
     return _.map(this.props.events, event => (
       <tr key={event.id}>
         <td>{event.id}</td>
-        <td>{event.title}</td>
+        <td>
+          <Link to={`/events/${event.id}`}>
+            {event.title}
+          </Link>
+        </td>
         <td>{event.body}</td>
       </tr>
     ))
